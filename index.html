@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .lbt{
+            margin: 0 auto;
+            position: relative;
+        }
+        .big{
+            margin: 0 auto;
+            width: 560px;
+            height: 300px;
+            overflow: hidden;
+            border: 1px solid;
+        }
+        .small{
+
+            position: relative;
+            margin: 0 auto;
+            width: 380px;
+            height: 50px;
+        }
+        .small li {
+            float: left;
+            width: 56px;
+            height: 30px;
+            padding: 10px;
+        }
+        .small li img{
+            display: block;
+            width: 56px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="lbt">
+        <ul class="big">
+            <li class="current"><img src="img/1.jpg" alt="1"/></li>
+            <li><img src="img/2.jpg" alt="2"/></li>
+            <li><img src="img/3.jpg" alt="3"/></li>
+            <li><img src="img/4.jpg" alt="4"/></li>
+            <li><img src="img/5.jpg" alt="5"/></li>
+        </ul>
+        <ul class="small">
+            <li><img src="img/1.jpg" alt="1"/></li>
+            <li><img src="img/2.jpg" alt="2"/></li>
+            <li><img src="img/3.jpg" alt="3"/></li>
+            <li><img src="img/4.jpg" alt="4"/></li>
+            <li><img src="img/5.jpg" alt="5"/></li>
+        </ul>
+    </div>
+
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        $(".small li").click(function(){
+            $('.big li').eq($(this).index()).fadeIn().siblings().fadeOut()
+        })
+    })
+   </script>
+<script type="text/javascript">
+    $(function(){
+        var Lbt=function(){
+            this.init();
+            this.num=binDom();
+        };
+        Lbt.prototype={
+            init:function(){
+                this.binDom();
+                this.binEvent();
+            },
+            binDom:$(".small li").click(function(){
+                var num=$(".small li").index();
+                return num;
+            }),
+            binEvent:$(".big li").eq(this.num).fadeIn("slow").siblings().fadeOut()
+        };
+        var lbt=new Lbt();
+    })
+</script>
